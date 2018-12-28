@@ -2,3 +2,18 @@
 #+STARTUP: indent
 
 * Clojure for Node for Max
+** Introduction
+
+These are the first steps towards booting up ClojureScript inside Node for Max, including a network REPL so that we can live-code through Node.js into the Max world.
+
+** Setup
+
+- To start, pure Node.js - no Max involvement yet
+- Following instructions: [[https://lambdaisland.com/blog/2017-05-02-nodejs-scripts-clojurescript]] - the Node.js section
+
+** Compile and Run: First Shot
+
+- =project.clj= is set up to compile from =src-cljs= into =package/index.js=
+- Compile using =lein cljsbuild once=
+- Run with =node package/index.js=
+- To avoid confusion, we've removed the =src= directory used by default for (Java) Clojure source
