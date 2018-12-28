@@ -1,0 +1,4 @@
+-*- mode: org; mode: visual-line; -*-
+#+STARTUP: indent
+
+* Clojure for Node for Max
