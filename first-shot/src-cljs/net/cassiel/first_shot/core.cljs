@@ -1,4 +1,4 @@
-(ns repl-test.core
+(ns net.cassiel.first-shot.core
   (:require [cljs.nodejs :as nodejs]))
 
 (nodejs/enable-util-print!)

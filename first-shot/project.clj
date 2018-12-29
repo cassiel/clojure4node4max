@@ -8,7 +8,7 @@
   :plugins [[lein-cljsbuild "1.1.5"]]
   :cljsbuild {:builds [{:id "prod"
                         :source-paths ["src-cljs"]
-                        :compiler {:main repl-test.core
+                        :compiler {:main net.cassiel.first-shot.core
                                    :output-to "package/index.js"
                                    :target :nodejs
                                    :output-dir "target"
