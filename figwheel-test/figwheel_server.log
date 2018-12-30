@@ -1,0 +1,6 @@
+Figwheel: focusing on build-ids (prod)
+[0mCompiling "package/index.js" from ["src-cljs"]...
+[32mSuccessfully compiled "package/index.js" in 0.097 seconds.[0m
+notifying browser that file changed:  target/goog/deps.js
+notifying browser that file changed:  target/cljs_deps.js
+notifying browser that file changed:  /net/cassiel/figwheel_test/core.js
