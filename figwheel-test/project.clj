@@ -12,7 +12,7 @@
                         :source-paths ["src-cljs"]
                         :figwheel true
                         :compiler {:main net.cassiel.figwheel-test.core
-                                   :output-to "package/index.js"
+                                   :output-to "main.js"
                                    :target :nodejs
                                    :output-dir "target"
                                    ;; :externs ["externs.js"]

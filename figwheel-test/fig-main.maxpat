@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 125.0, 152.0, 883.0, 479.0 ],
+		"rect" : [ -261.0, -841.0, 883.0, 479.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 450.0, 110.0, 61.0, 20.0 ],
+					"patching_rect" : [ 450.0, 105.0, 61.0, 20.0 ],
 					"text" : "loadbang"
 				}
 
@@ -56,7 +56,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 450.0, 150.0, 61.0, 20.0 ],
+					"patching_rect" : [ 450.0, 145.0, 61.0, 20.0 ],
 					"text" : "del 3000"
 				}
 
@@ -68,8 +68,20 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 450.0, 185.0, 107.0, 20.0 ],
+					"patching_rect" : [ 450.0, 180.0, 107.0, 20.0 ],
 					"text" : "showtab console"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 360.0, 75.0, 126.0, 20.0 ],
+					"text" : "script npm install"
 				}
 
 			}
@@ -244,10 +256,17 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "main.js",
-				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/first-shot",
+				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/figwheel-test",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -275,7 +294,6 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
-					"fontname" : [ "InputMono" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -285,6 +303,7 @@
 						"proportion" : 0.39
 					}
 ,
+					"fontname" : [ "InputMono" ],
 					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ]
 				}
 ,
