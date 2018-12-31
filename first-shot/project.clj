@@ -9,10 +9,10 @@
   :cljsbuild {:builds [{:id "prod"
                         :source-paths ["src-cljs"]
                         :compiler {:main net.cassiel.first-shot.core
-                                   :output-to "package/index.js"
+                                   :output-to "./main.js"
                                    :target :nodejs
                                    :output-dir "target"
-                                   ;; :externs ["externs.js"]
+                                   :externs ["externs.js"]
                                    :optimizations :advanced
                                    :pretty-print true
                                    :parallel-build true}}]})
