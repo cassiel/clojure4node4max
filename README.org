@@ -13,7 +13,13 @@ These are the first steps towards booting up ClojureScript inside Node for Max, 
 
 ** Compile and Run: First Shot
 
-- =project.clj= is set up to compile from =src-cljs= into =package/index.js=
+A very simple setup without any REPL support. Latest Clojure and ClojureScript.
+
+- =project.clj= is set up to compile from =src-cljs= into =main.js=
 - Compile using =lein cljsbuild once=
-- Run with =node package/index.js=
+- Run with =node main.js=
 - To avoid confusion, we've removed the =src= directory used by default for (Java) Clojure source
+
+** Issues
+
+- =lein cljsbuild once= seems to be busted; use =lein cljsbuild auto= instead
