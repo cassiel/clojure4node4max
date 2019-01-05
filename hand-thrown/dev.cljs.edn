@@ -1,4 +1,4 @@
 ^{:watch-dirs ["src"]}
 {:target      :nodejs
  :main        hello-world.core
- :launch-node true}
+ :launch-node false}
