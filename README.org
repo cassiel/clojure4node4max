@@ -11,7 +11,7 @@ These are the first steps towards booting up ClojureScript inside Node for Max, 
 - To start, pure Node.js - no Max involvement yet
 - Following instructions: [[https://lambdaisland.com/blog/2017-05-02-nodejs-scripts-clojurescript]] - the Node.js section
 
-** Compile and Run: First Shot
+** Compile and Run: First Shot (=first-shot=)
 
 A very simple setup without any REPL support. Latest Clojure and ClojureScript.
 
@@ -20,6 +20,19 @@ A very simple setup without any REPL support. Latest Clojure and ClojureScript.
 - Run with =node main.js=
 - To avoid confusion, we've removed the =src= directory used by default for (Java) Clojure source
 
+** First Figwheel (=figwheel-test=)
+
+- First test with "classic" Figwheel, under Leiningen: REPL works.
+
+** First Figwheel Main (=figwheel-main-test=)
+
+- First test with Figwheel Main, under Leiningen. REPL works.
+
+** Figwheel Main By Hand (=hand-thrown=)
+
+- Another Figwheel Main setup, using CLI Tools rather than Leiningen, to simplify the setup, make it closer to the Figwheel Main documentation, make the configuration more explicit, and maybe have a better chance to get a network REPL off the ground.
+
 ** Issues
 
 - =lein cljsbuild once= seems to be busted; use =lein cljsbuild auto= instead
+- Don't need to set up =target= in CLASSPATH: we don't have a web server that needs access to compiled JS
