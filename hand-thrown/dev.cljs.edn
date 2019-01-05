@@ -1,4 +1,5 @@
-^{:watch-dirs ["src"]}
-{:target      :nodejs
- :main        hello-world.core
- :launch-node true}
+^{:watch-dirs   ["src"]
+  :node-command "node"
+  :launch-node  true}
+{:target :nodejs
+ :main   hello-world.core}
