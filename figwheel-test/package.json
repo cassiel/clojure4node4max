@@ -1,7 +1,0 @@
-{
-    "name": "@cassiel/figwheel_test",
-    "version": "0.0.0",
-    "dependencies": {
-        "ws": "^6.1.2"
-    }
-}

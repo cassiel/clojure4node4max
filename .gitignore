@@ -1,1 +1,5 @@
+target
+.cpcache
+.rebel*
+.nrepl-port
 *.log
