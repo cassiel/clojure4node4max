@@ -12,3 +12,5 @@
   (.post max-api x))
 
 (.outlet max-api "Hello World")
+
+(.outlet max-api (js/Date.))

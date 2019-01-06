@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 223.0, 1211.0, 771.0, 479.0 ],
+		"rect" : [ 215.0, 1106.0, 771.0, 479.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -56,8 +56,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 150.0, 250.0, 135.0, 20.0 ],
-					"text" : "\"Hello World\""
+					"patching_rect" : [ 75.0, 245.0, 195.0, 20.0 ],
+					"text" : "2019-01-06T16:35:54.676Z"
 				}
 
 			}
@@ -163,7 +163,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "xmain.js",
-				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/hand-thrown",
+				"bootpath" : "~/GITHUB/cassiel/clojure4node4max",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -191,8 +191,6 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
-					"fontname" : [ "InputMono" ],
-					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -201,7 +199,9 @@
 						"angle" : 270.0,
 						"proportion" : 0.39
 					}
-
+,
+					"fontname" : [ "InputMono" ],
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -210,13 +210,7 @@
  ],
 		"default_bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 		"bgcolor" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
-		"editing_bgcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"editing_bgcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ]
 	}
 
 }
