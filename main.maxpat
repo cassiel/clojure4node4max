@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 215.0, 1106.0, 771.0, 479.0 ],
+		"rect" : [ 101.0, 1219.0, 771.0, 479.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,24 @@
 		"subpatcher_template" : "cassiel",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 4,
+					"outlettype" : [ "dictionary", "", "", "" ],
+					"patching_rect" : [ 570.0, 75.0, 50.5, 20.0 ],
+					"saved_object_attributes" : 					{
+						"embed" : 0,
+						"parameter_enable" : 0,
+						"parameter_mappable" : 0
+					}
+,
+					"text" : "dict X"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-10",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -57,7 +75,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 75.0, 245.0, 195.0, 20.0 ],
-					"text" : "2019-01-06T16:35:54.676Z"
+					"text" : "2019-01-09T21:22:03.174Z"
 				}
 
 			}
@@ -191,6 +209,7 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -200,8 +219,7 @@
 						"proportion" : 0.39
 					}
 ,
-					"fontname" : [ "InputMono" ],
-					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ]
+					"fontname" : [ "InputMono" ]
 				}
 ,
 				"parentstyle" : "",
