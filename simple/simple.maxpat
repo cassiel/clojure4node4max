@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 101.0, 1219.0, 771.0, 479.0 ],
+		"rect" : [ 142.0, 224.0, 771.0, 479.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -41,29 +41,11 @@
 				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 4,
-					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 570.0, 75.0, 50.5, 20.0 ],
-					"saved_object_attributes" : 					{
-						"embed" : 0,
-						"parameter_enable" : 0,
-						"parameter_mappable" : 0
-					}
-,
-					"text" : "dict X"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "message",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 210.0, 75.0, 146.0, 20.0 ],
-					"text" : "script npm install ws"
+					"patching_rect" : [ 60.0, 220.0, 87.0, 20.0 ],
+					"text" : "loadmess ---"
 				}
 
 			}
@@ -74,8 +56,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 75.0, 245.0, 195.0, 20.0 ],
-					"text" : "2019-01-09T21:22:03.174Z"
+					"patching_rect" : [ 45.0, 305.0, 198.0, 20.0 ],
+					"text" : "---"
 				}
 
 			}
@@ -86,7 +68,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 405.0, 100.0, 81.0, 20.0 ],
+					"patching_rect" : [ 90.0, 85.0, 81.0, 20.0 ],
 					"text" : "script stop"
 				}
 
@@ -98,7 +80,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 180.0, 125.0, 87.0, 20.0 ],
+					"patching_rect" : [ 90.0, 45.0, 87.0, 20.0 ],
 					"text" : "script start"
 				}
 
@@ -117,7 +99,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 315.0, 235.0, 400.0, 220.0 ],
+					"patching_rect" : [ 300.0, 205.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -129,7 +111,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 270.0, 185.0, 140.0, 20.0 ],
+					"patching_rect" : [ 180.0, 155.0, 146.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
@@ -138,7 +120,7 @@
 						"watch" : 0
 					}
 ,
-					"text" : "node.script xmain.js"
+					"text" : "node.script simple.js"
 				}
 
 			}
@@ -159,8 +141,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-10", 0 ]
+					"destination" : [ "obj-8", 1 ],
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -180,8 +162,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "xmain.js",
-				"bootpath" : "~/GITHUB/cassiel/clojure4node4max",
+				"name" : "simple.js",
+				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/simple",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -209,7 +191,6 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
-					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -219,6 +200,7 @@
 						"proportion" : 0.39
 					}
 ,
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"fontname" : [ "InputMono" ]
 				}
 ,

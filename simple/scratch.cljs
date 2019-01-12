@@ -17,11 +17,4 @@
 
 (.-MESSAGE_TYPES max-api)
 
-;; Play with promises:
-
-(ns user
-  (:require [cljs-promises.core :as p]))
-
-(cljs-promises.async/extend-promises-as-pair-channels!)
-
 (-> max-api (.getDict "X"))
