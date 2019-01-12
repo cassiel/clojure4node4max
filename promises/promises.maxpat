@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 101.0, 1219.0, 771.0, 479.0 ],
+		"rect" : [ 213.0, 205.0, 771.0, 479.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,11 @@
 		"subpatcher_template" : "cassiel",
 		"boxes" : [ 			{
 				"box" : 				{
+					"data" : 					{
+						"A" : 1,
+						"B" : [ 2, 3 ]
+					}
+,
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -46,7 +51,7 @@
 					"outlettype" : [ "dictionary", "", "", "" ],
 					"patching_rect" : [ 570.0, 75.0, 50.5, 20.0 ],
 					"saved_object_attributes" : 					{
-						"embed" : 0,
+						"embed" : 1,
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
 					}
@@ -57,36 +62,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 210.0, 75.0, 146.0, 20.0 ],
-					"text" : "script npm install ws"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-8",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 75.0, 245.0, 195.0, 20.0 ],
-					"text" : "2019-01-09T21:22:03.174Z"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 405.0, 100.0, 81.0, 20.0 ],
+					"patching_rect" : [ 135.0, 90.0, 81.0, 20.0 ],
 					"text" : "script stop"
 				}
 
@@ -98,7 +79,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 180.0, 125.0, 87.0, 20.0 ],
+					"patching_rect" : [ 135.0, 55.0, 87.0, 20.0 ],
 					"text" : "script start"
 				}
 
@@ -117,7 +98,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 315.0, 235.0, 400.0, 220.0 ],
+					"patching_rect" : [ 96.0, 215.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -129,7 +110,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 270.0, 185.0, 140.0, 20.0 ],
+					"patching_rect" : [ 96.0, 135.0, 159.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
@@ -138,7 +119,7 @@
 						"watch" : 0
 					}
 ,
-					"text" : "node.script xmain.js"
+					"text" : "node.script promises.js"
 				}
 
 			}
@@ -147,20 +128,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-1", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-8", 1 ],
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-10", 0 ]
 				}
 
 			}
@@ -180,8 +147,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "xmain.js",
-				"bootpath" : "~/GITHUB/cassiel/clojure4node4max",
+				"name" : "promises.js",
+				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/promises",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -209,7 +176,6 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
-					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -219,6 +185,7 @@
 						"proportion" : 0.39
 					}
 ,
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"fontname" : [ "InputMono" ]
 				}
 ,
