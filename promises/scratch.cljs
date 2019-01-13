@@ -20,28 +20,28 @@
         (.post max-api (str "Error: " (ex-message e)))))
     ))
 
-(.outlet max-api "show")
+(go
+  (let [pp (<? (.updateDict max-api "X" "A2" (clj->js (range 3))))]
+    (.outlet max-api "show")
+    ))
 
+(go
+  (let [pp (<? (.setDict max-api "X" (clj->js {:Q (range 3)})))]
+    (.outlet max-api "show")
+    ))
 
 (go
   (let [pp (<? (-> max-api (.getDict "X")))
         pp' (-> pp
-                js->clj
-                (assoc :A (range 5)
-                       :H "HELLO"
+                (js->clj :keywordize-keys true)
+                (assoc :H "HELLO"
                        :W "WORLD")
-                (update :A (partial map inc))
+                (update :Q (partial map inc))
                 clj->js)]
     (try
       (.post max-api pp)
       (.post max-api pp')
-      (.setDict max-api "X" pp')
+      (<? (.setDict max-api "X" pp'))
       (catch js/Error e
         (.post max-api (str "Error: " (ex-message e)))))
-    ))
-
-
-(clj->js {:A "HELLO"})
-
-(-> {:A [1 2 3]}
-    (update :A (partial map inc)))
+    (.outlet max-api "show")))
