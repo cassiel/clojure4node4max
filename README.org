@@ -22,31 +22,28 @@ Most of this machinery is invisible (so in particular, the user code in ClojureS
 
 ** Setup
 
-- To start, pure Node.js - no Max involvement yet
-- Following instructions: [[https://lambdaisland.com/blog/2017-05-02-nodejs-scripts-clojurescript]] - the Node.js section
+We're using the Clojure CLI tools - nothing we're doing is complicated enough to need Leiningen, so just follow the set detailed here: https://clojure.org/guides/deps_and_cli.
 
-** Compile and Run: First Shot (=first-shot=)
+** Compile and Run: First Shot (=simple=)
 
-A very simple setup without any REPL support. Latest Clojure and ClojureScript.
+A very simple setup with a network REPL. This is the configuration file, =deps.edn=:
 
-- =project.clj= is set up to compile from =src-cljs= into =main.js=
-- Compile using =lein cljsbuild once=
-- Run with =node main.js=
-- To avoid confusion, we've removed the =src= directory used by default for (Java) Clojure source
+#+BEGIN_SRC clojure
+  ^{:watch-dirs   ["src"]
+    :node-command "node"
+    :launch-node  false}
+  {:target :nodejs
+   :main   simple.core}
+#+END_SRC
 
-** First Figwheel (=figwheel-test=)
+The target is =:nodejs=. Also, in the meta-data, we've disabled =:launch-node= since that's done by Max. For testing (without the Max API) make this =true=, in which case the value of =:node-command= might need to be altered.
 
-- First test with "classic" Figwheel, under Leiningen: REPL works.
+Note the symbolic link from =simple.js= to the actual built target. This is needed because Max's =node.script= object doesn't support complex file paths.
 
-** First Figwheel Main (=figwheel-main-test=)
+To build, invoke =cider-jack-in-cljs= from Emacs while visiting =scratch.cljs=. For ClojureScript REPL type, enter =figwheel-main=. For figwheel-main build, enter =:dev=.
 
-- First test with Figwheel Main, under Leiningen. REPL works.
+Start the Max node process once the CIDER session has initialised and is waiting for a client connection.
 
-** Figwheel Main By Hand (=hand-thrown=)
+** Working with Promises (=promises=)
 
-- Another Figwheel Main setup, using CLI Tools rather than Leiningen, to simplify the setup, make it closer to the Figwheel Main documentation, make the configuration more explicit, and maybe have a better chance to get a network REPL off the ground.
-
-** Issues
-
-- =lein cljsbuild once= seems to be busted; use =lein cljsbuild auto= instead
-- Don't need to set up =target= in CLASSPATH: we don't have a web server that needs access to compiled JS
+A more sophisticated example, interacting with Max dictionaries. Since dictionary operations return Javascript promises, we're using [[https://github.com/jamesmacaulay/cljs-promises][cljs-promises]], which wraps them in ClojureScript's [[https://github.com/clojure/core.async][core.async]] machinery.

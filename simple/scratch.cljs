@@ -16,5 +16,3 @@
 (.outlet max-api (js/Date.))
 
 (.-MESSAGE_TYPES max-api)
-
-(-> max-api (.getDict "X"))

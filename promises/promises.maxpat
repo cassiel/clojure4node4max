@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 203.0, 1054.0, 850.0, 479.0 ],
+		"rect" : [ 80.0, 1017.0, 834.0, 479.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -73,13 +73,6 @@
 			}
 , 			{
 				"box" : 				{
-					"data" : 					{
-						"A" : [ 1, 2, 3, 4, 5 ],
-						"B" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
-						"H" : "HELLO",
-						"W" : "WORLD"
-					}
-,
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -87,7 +80,7 @@
 					"outlettype" : [ "dictionary", "", "", "" ],
 					"patching_rect" : [ 585.0, 90.0, 50.5, 20.0 ],
 					"saved_object_attributes" : 					{
-						"embed" : 1,
+						"embed" : 0,
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
 					}
