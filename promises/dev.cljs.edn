@@ -1,5 +1,2 @@
-^{:watch-dirs   ["src"]
-  :node-command "node"
-  :launch-node  false}
 {:target :nodejs
  :main   promises.core}

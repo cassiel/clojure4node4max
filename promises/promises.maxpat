@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 80.0, 1017.0, 834.0, 479.0 ],
+		"rect" : [ 34.0, 979.0, 423.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -55,7 +55,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 585.0, 165.0, 165.0, 165.0 ]
+					"patching_rect" : [ 15.0, 320.0, 345.0, 165.0 ]
 				}
 
 			}
@@ -67,7 +67,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 585.0, 35.0, 24.0, 24.0 ]
+					"patching_rect" : [ 15.0, 225.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -78,7 +78,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 585.0, 90.0, 50.5, 20.0 ],
+					"patching_rect" : [ 15.0, 280.0, 50.5, 20.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -125,9 +125,10 @@
 					"maxclass" : "bpatcher",
 					"name" : "n4m.monitor.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 96.0, 240.0, 400.0, 220.0 ],
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 15.0, 550.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -143,8 +144,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node" : "",
-						"npm" : "",
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
