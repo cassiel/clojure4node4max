@@ -26,7 +26,7 @@ We're using the Clojure CLI tools - nothing we're doing is complicated enough to
 
 ** Compile and Run: First Shot (=simple=)
 
-A very simple setup with a network REPL. This is the configuration file, =deps.edn=:
+A very simple setup with a network REPL. This is the build configuration file, =dev.cljs.edn=:
 
 #+BEGIN_SRC clojure
   ^{:watch-dirs   ["src"]
