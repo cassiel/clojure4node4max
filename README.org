@@ -10,7 +10,7 @@ This is a simple project for bringing up a ClojureScript network REPL to talk to
 
 Max has a library object called =node.script= which can fire up a Node.js process and attach it to the enclosing patcher document, so that the patcher can run Javascript code, and the Javascript code can manipulate things in the Max world.
 
-Figwheel Main is a set of libraries which equips a Javascript client (a web browser, or Node.js) with a network connection to a Figwheel server; the latter runs in Clojure (on the JVM), hosts the ClojureScript cross-compiler, and supports a REPL (read-eval-print loop). When everything's running, ClojureScript can be live-coded via the server, which compiles everything to Javascript and sends it through to the client. The server also tracks changes to source files, uploading code to the client as required.
+[Figwheel Main](https://figwheel.org/) is a set of libraries which equips a Javascript client (a web browser, or Node.js) with a network connection to a Figwheel server; the latter runs in Clojure (on the JVM), hosts the ClojureScript cross-compiler, and supports a REPL (read-eval-print loop). When everything's running, ClojureScript can be live-coded via the server, which compiles everything to Javascript and sends it through to the client. The server also tracks changes to source files, uploading code to the client as required.
 
 When everything is running, the setup looks like this:
 
@@ -18,11 +18,11 @@ When everything is running, the setup looks like this:
 - A Figwheel Main server, which Max's Node.js attaches to
 - Emacs (or equivalent), attached to the server for live coding via CIDER
 
-Most of this machinery is invisible (so in particular, the user code in ClojureScript for Max needs to know nothing about live coding support); Figwheel and CIDER augment the code automatically to tie everything together.
+Most of this machinery is invisible (so in particular, the Max application code in ClojureScript for Max needs to know nothing about live coding support); Figwheel and CIDER augment the code automatically to tie everything together.
 
 ** Setup
 
-We're using the Clojure CLI tools - nothing we're doing is complicated enough to need Leiningen, so just follow the set detailed here: https://clojure.org/guides/deps_and_cli.
+We were initially using the basic (but new) Clojure CLI tools, but a build on a new machine caused some breakage, so we've switched back to tried-and-trusted [Leiningen](https://leiningen.org/). The Figwheel Main site has [good documentation](https://figwheel.org/docs/), though that *is* oriented towards Clojure CLI.
 
 ** Compile and Run: First Shot (=simple=)
 
