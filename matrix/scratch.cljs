@@ -36,4 +36,4 @@
           (<? (.outlet max-api "m" "setcell" x y "val" r g b))))
       (.outlet max-api "m" "bang")))
 
-(render (fn [x y] [(= x 0) 0 0]))
+(render (fn [x y] [(> x y) (/ x 16) (= x 4)]))
