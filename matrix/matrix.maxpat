@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 639.0, 79.0, 423.0, 787.0 ],
+		"rect" : [ 34.0, 79.0, 627.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,59 +39,60 @@
 		"subpatcher_template" : "cassiel",
 		"boxes" : [ 			{
 				"box" : 				{
-					"fontname" : "Courier",
-					"id" : "obj-9",
+					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 96.0, 165.0, 90.0, 20.0 ],
-					"style" : "cassiel",
-					"text" : "route show"
+					"patching_rect" : [ 60.0, 160.0, 59.0, 20.0 ],
+					"text" : "route m"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-8",
-					"maxclass" : "dict.view",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 320.0, 345.0, 165.0 ],
-					"style" : "cassiel"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-7",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 15.0, 225.0, 24.0, 24.0 ],
-					"style" : "cassiel"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Courier",
-					"id" : "obj-2",
+					"id" : "obj-13",
 					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "bang", "", "clear" ],
+					"patching_rect" : [ 285.0, 131.0, 88.0, 20.0 ],
+					"text" : "t b l clear"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "message",
 					"numinlets" : 2,
-					"numoutlets" : 4,
-					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 15.0, 280.0, 68.0, 20.0 ],
-					"saved_object_attributes" : 					{
-						"embed" : 0,
-						"parameter_enable" : 0,
-						"parameter_mappable" : 0
-					}
-,
-					"style" : "cassiel",
-					"text" : "dict X"
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 285.0, 100.0, 181.0, 20.0 ],
+					"text" : "setcell 0 0 val 1. 1. 1."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "jit_matrix", "" ],
+					"patching_rect" : [ 55.0, 195.0, 215.0, 20.0 ],
+					"text" : "jit.matrix X 3 float32 16 16"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "jit.pwindow",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "jit_matrix", "" ],
+					"patching_rect" : [ 55.0, 225.0, 290.0, 290.0 ]
 				}
 
 			}
@@ -103,7 +104,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.0, 90.0, 114.0, 20.0 ],
+					"patching_rect" : [ 135.0, 70.0, 114.0, 20.0 ],
 					"style" : "cassiel",
 					"text" : "script stop"
 				}
@@ -117,7 +118,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.0, 55.0, 130.0, 20.0 ],
+					"patching_rect" : [ 135.0, 35.0, 130.0, 20.0 ],
 					"style" : "cassiel",
 					"text" : "script start"
 				}
@@ -138,7 +139,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 15.0, 550.0, 400.0, 220.0 ],
+					"patching_rect" : [ 15.0, 530.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -151,37 +152,62 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 96.0, 135.0, 212.0, 20.0 ],
+					"patching_rect" : [ 60.0, 110.0, 160.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
 					"style" : "cassiel",
-					"text" : "node.script promises.js"
+					"text" : "node.script matrix.js"
 				}
 
 			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"source" : [ "obj-1", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
+					"destination" : [ "obj-14", 0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-8", 0 ],
-					"source" : [ "obj-2", 0 ]
+					"destination" : [ "obj-6", 0 ],
+					"midpoints" : [ 210.5, 151.0, 24.5, 151.0 ],
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"midpoints" : [ 294.5, 187.5, 64.5, 187.5 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-14", 0 ]
 				}
 
 			}
@@ -199,24 +225,10 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"source" : [ "obj-7", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "promises.js",
-				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/promises",
+				"name" : "matrix.js",
+				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/matrix",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

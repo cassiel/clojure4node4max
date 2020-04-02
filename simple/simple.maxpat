@@ -3,19 +3,19 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
+			"minor" : 1,
 			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 142.0, 224.0, 771.0, 479.0 ],
+		"rect" : [ 380.0, 191.0, 771.0, 479.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
-		"default_fontname" : "Anonymous Pro",
+		"default_fontname" : "Courier",
 		"gridonopen" : 2,
 		"gridsize" : [ 15.0, 5.0 ],
 		"gridsnaponopen" : 2,
@@ -40,6 +40,7 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -68,7 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 85.0, 81.0, 20.0 ],
+					"patching_rect" : [ 90.0, 85.0, 105.0, 20.0 ],
 					"text" : "script stop"
 				}
 
@@ -80,7 +81,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 45.0, 87.0, 20.0 ],
+					"patching_rect" : [ 90.0, 45.0, 105.0, 20.0 ],
 					"text" : "script start"
 				}
 
@@ -97,8 +98,9 @@
 					"maxclass" : "bpatcher",
 					"name" : "n4m.monitor.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 300.0, 205.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
@@ -107,6 +109,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-1",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
@@ -115,8 +118,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node" : "",
-						"npm" : "",
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -191,6 +194,7 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -200,7 +204,6 @@
 						"proportion" : 0.39
 					}
 ,
-					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"fontname" : [ "InputMono" ]
 				}
 ,
