@@ -14,7 +14,7 @@
 (.outlet max-api "m" "setcell" 0 0 "val" 1.0 1.0 1.0)
 (.outlet max-api "m" "bang")
 
-(def MATRIX-SIZE 16)
+(def MATRIX-SIZE 64)
 
 ;; "go" for async:
 (go (.outlet max-api "m" "clear")
@@ -36,4 +36,6 @@
           (<? (.outlet max-api "m" "setcell" x y "val" r g b))))
       (.outlet max-api "m" "bang")))
 
-(render (fn [x y] [(> x y) (/ x 16) (= x 4)]))
+(render (fn [x y] [(or (> x y) (zero? (mod x 4)))
+                   (/ x MATRIX-SIZE)
+                   (zero? (mod (+ x y) 4))]))

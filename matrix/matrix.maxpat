@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 627.0, 787.0 ],
+		"rect" : [ 745.0, 96.0, 508.0, 744.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -19,7 +19,7 @@
 		"gridonopen" : 2,
 		"gridsize" : [ 15.0, 5.0 ],
 		"gridsnaponopen" : 2,
-		"objectsnaponopen" : 1,
+		"objectsnaponopen" : 0,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
 		"lefttoolbarpinned" : 0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "cassiel",
 		"subpatcher_template" : "cassiel",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-14",
@@ -44,32 +45,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 60.0, 160.0, 59.0, 20.0 ],
+					"patching_rect" : [ 45.0, 160.0, 59.0, 20.0 ],
 					"text" : "route m"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-13",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "bang", "", "clear" ],
-					"patching_rect" : [ 285.0, 131.0, 88.0, 20.0 ],
-					"text" : "t b l clear"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-12",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 285.0, 100.0, 181.0, 20.0 ],
-					"text" : "setcell 0 0 val 1. 1. 1."
 				}
 
 			}
@@ -80,8 +57,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 55.0, 195.0, 215.0, 20.0 ],
-					"text" : "jit.matrix X 3 float32 16 16"
+					"patching_rect" : [ 45.0, 195.0, 210.0, 20.0 ],
+					"text" : "jit.matrix X 3 float32 64 64"
 				}
 
 			}
@@ -92,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 55.0, 225.0, 290.0, 290.0 ]
+					"patching_rect" : [ 45.0, 230.0, 290.0, 290.0 ]
 				}
 
 			}
@@ -152,12 +129,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 60.0, 110.0, 160.0, 20.0 ],
+					"patching_rect" : [ 45.0, 110.0, 160.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -177,7 +152,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 210.5, 151.0, 24.5, 151.0 ],
+					"midpoints" : [ 195.5, 151.0, 24.5, 151.0 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -186,21 +161,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
-					"source" : [ "obj-12", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
-					"midpoints" : [ 294.5, 187.5, 64.5, 187.5 ],
-					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -256,6 +216,7 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
+					"fontname" : [ "InputMono" ],
 					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
@@ -265,8 +226,7 @@
 						"angle" : 270.0,
 						"proportion" : 0.39
 					}
-,
-					"fontname" : [ "InputMono" ]
+
 				}
 ,
 				"parentstyle" : "",
