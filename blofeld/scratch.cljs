@@ -1,5 +1,3 @@
-;; Play with promises:
-
 (ns user
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [cljs-promises.core :as p]
@@ -10,58 +8,24 @@
 
 (a/extend-promises-as-pair-channels!)
 
-(go
-  (<? (.setDict max-api "X" #js {}))
-  (.outlet max-api "show"))
+(defn output-midi-seq [bytes]
+  (go
+    (loop [b (seq bytes)]
+      (when-let [h (first b)]
+        (<? (.outlet max-api h))
+        (recur (rest b))))))
 
-(go
-  (let [pp (-> max-api (.getDict "X"))]
-    (try
-      (.post max-api (<? pp))
-      (catch js/Error e
-        (.post max-api (str "Error: " (ex-message e)))))
-    ))
+;; TODO: return value of output-midi-seq so that we can chain them.
 
+;; Basic program change, channel 1:
 
-(go
-  (let [pp (<? (.setDict max-api "X" (clj->js {:Q (range 3)
-                                               :R (range 10)})))]
-    (.outlet max-api "show")
-    ))
+(output-midi-seq [0xC0 0])
 
-(go
-  (let [pp (<? (.updateDict max-api "X" "A2" (clj->js (range 3))))]
-    (.outlet max-api "show")
-    ))
-
-(go
-  (let [pp (<? (-> max-api (.getDict "X")))
-        pp' (-> pp
-                (js->clj :keywordize-keys true)
-                (assoc :H "HELLO"
-                       :W "WORLD")
-                (update :Q (partial map inc))
-                clj->js)]
-    (try
-      (.post max-api pp)
-      (.post max-api pp')
-      (<? (.setDict max-api "X" pp'))
-      (catch js/Error e
-        (.post max-api (str "Error: " (ex-message e)))))
-    (.outlet max-api "show")))
-
-(go
-  (let [pp  (<? (-> max-api (.getDict "X")))
-        pp' (-> pp
-                (js->clj :keywordize-keys true)
-                (update :H #(str "." %))
-                (update :W #(str % "."))
-                (update :Q (partial map inc))
-                (update :R (partial map  #(* (rand) 10)))
-                (assoc :D (str (js/Date.)))
-                clj->js)]
-    (try
-      (<? (.setDict max-api "X" pp'))
-      (catch js/Error e
-        (.post max-api (str "Error: " (ex-message e)))))
-    (.outlet max-api "show")))
+(let [WALDORF   0x3E
+      BLOFELD   0x13
+      DEVICE-ID 0x7F
+      SNDR-CMD  0x00
+      BANK      0
+      PROG      0
+      CHK       0]
+  (output-midi-seq [0xF0 WALDORF BLOFELD DEVICE-ID SNDR-CMD BANK PROG CHK 0xF7]))
