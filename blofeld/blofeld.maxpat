@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 81.0, 132.0, 889.0, 620.0 ],
+		"rect" : [ 46.0, 983.0, 889.0, 620.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "cassiel",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 420.0, 55.0, 50.0, 20.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-19",
 					"maxclass" : "newobj",
@@ -87,7 +99,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-14",
-					"items" : [ "AU DLS Synth 1", ",", "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "Arturia KeyStep 32", ",", "Fireface UC Mac (", ",", "Fireface UC Mac ( #2", ",", "from Max 1", ",", "from Max 2", ",", "Blofeld" ],
+					"items" : [ "AU DLS Synth 1", ",", "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "Seaboard BLOCK", ",", "Arturia KeyStep 32", ",", "Fireface UC Mac (", ",", "Fireface UC Mac ( #2", ",", "from Max 1", ",", "from Max 2", ",", "Blofeld" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -264,6 +276,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -339,13 +353,29 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"order" : 1,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
+					"order" : 0,
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -409,7 +439,6 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
-					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -419,6 +448,7 @@
 						"proportion" : 0.39
 					}
 ,
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
 					"fontname" : [ "InputMono" ]
 				}
 ,
