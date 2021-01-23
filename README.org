@@ -47,3 +47,7 @@ Start the Max node process once the CIDER session has initialised and is waiting
 ** Working with Promises (=promises=)
 
 A more sophisticated example, interacting with Max dictionaries. Since dictionary operations return Javascript promises, we're using [[https://github.com/jamesmacaulay/cljs-promises][cljs-promises]], which wraps them in ClojureScript's [[https://github.com/clojure/core.async][core.async]] machinery.
+
+** Blofeld (=net.cassiel.blofeld=)
+
+A more sophisticated playpen for talking to a Waldorf Blofeld synthesiser. We use NPM to wheel in WebSocket support for the REPL to replace the less efficient polling.

@@ -3,3 +3,4 @@ target
 .rebel*
 .nrepl-port
 *.log
+node_modules

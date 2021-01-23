@@ -1,2 +1,2 @@
 {:target :nodejs
- :main blofeld.core}
+ :main net.cassiel.blofeld.core}
