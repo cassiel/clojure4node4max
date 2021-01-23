@@ -1,10 +1,11 @@
 (ns user
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [net.cassiel.blofeld.midi :as midi]
+  (:require [net.cassiel.blofeld.manifest :as m]
+            [net.cassiel.blofeld.midi :as midi]
+            [net.cassiel.blofeld.sysex-in :as sysex-in]
             [cljs-promises.core :as p]
             [cljs-promises.async :as a :refer-macros [<?]]
-            [cljs.core.async :refer [put! chan <!]]
-            [clojure.spec.alpha :as s]))
+            [cljs.core.async :refer [put! chan <! close!]]))
 
 (def max-api (js/require "max-api"))
 
@@ -17,23 +18,18 @@
 (def msg-chan (chan))
 
 (go-loop []
-  (let [m (<! msg-chan)]
-    (println (first m) (count m))
+  (when-let [m (<! msg-chan)]
+    (sysex-in/process max-api m)
     (recur)))
 
 (let [number (.-MESSAGE_TYPES.NUMBER max-api)]
   (doto max-api
     (.removeHandlers number)
-    ;; integers (numbers) in accumulate into *in-message* (backwards!):
-    #_ (.addHandler number (fn [i]
-                             (swap! *STATE* update :incoming conj i)))
     (.addHandler number #(midi/handle-input % msg-chan))))
 
-(let [WALDORF   0x3E
-      BLOFELD   0x13
-      DEVICE-ID 0x7F
-      SNDR-CMD  0x00
-      BANK      0
-      PROG      0
-      CHK       0]
-  (midi/output-seq max-api [0xF0 WALDORF BLOFELD DEVICE-ID SNDR-CMD BANK PROG CHK 0xF7]))
+(let [BANK 0
+      PROG 0
+      CHK  0]
+  (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/DEVICE-ID m/SNDR BANK PROG CHK m/EOX]))
+
+(close! msg-chan)
