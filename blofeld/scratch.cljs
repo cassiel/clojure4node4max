@@ -30,6 +30,6 @@
 (let [BANK 0
       PROG 0
       CHK  0]
-  (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/DEVICE-ID m/SNDR BANK PROG CHK m/EOX]))
+  (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/BROADCAST-ID m/SNDR BANK PROG CHK m/EOX]))
 
 (close! msg-chan)
