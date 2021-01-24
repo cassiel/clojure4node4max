@@ -3,6 +3,7 @@
   (:require [net.cassiel.blofeld.manifest :as m]
             [net.cassiel.blofeld.midi :as midi]
             [net.cassiel.blofeld.sysex-in :as sysex-in]
+            [clojure.core.match :refer [match]]
             [cljs-promises.core :as p]
             [cljs-promises.async :as a :refer-macros [<?]]
             [cljs.core.async :refer [put! chan <! close!]]))
