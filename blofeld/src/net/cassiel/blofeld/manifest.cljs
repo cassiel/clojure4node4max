@@ -12,3 +12,6 @@
 
 ;; Sound Dump:
 (def SNDD 0x10)
+
+;; Sound Parameter Change:
+(def SNDP 0x20)

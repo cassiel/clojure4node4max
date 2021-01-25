@@ -19,19 +19,29 @@
                           chk (last %)]
                       (= (bit-and sum 0x7F) chk)))
 
+(s/def ::SNDP-LEN (s/coll-of number? :count 9))         ; Excludes EOX
+
+(s/def ::SNDP-HEAD #(let [SOX m/SOX
+                          WALDORF m/WALDORF
+                          BLOFELD m/BLOFELD
+                          SNDP m/SNDP]
+                      (match %
+                             ([SOX WALDORF BLOFELD _ SNDP ll hh pp xx] :seq) :t :else nil)))
+
 (s/def ::SYSEX-IN (s/or :SNDD (s/and ::SNDD-LEN ::SNDD-HEAD ::SNDD-TAIL)
+                        :SNDP (s/and ::SNDP-LEN ::SNDP-HEAD)
                         :EOX #(= (first %) m/EOX)))
 
 (defn handle-SNDD [msg]
   ;; Message runs from SOX, omits EOX. Checksum already validated.
   (let [[_ _ _ _ _ hi lo & rest] msg]
-    {:index (bit-or (bit-shift-left hi 7) lo)
-     :data  (butlast rest)}))
+    [hi lo (butlast rest)]))
 
 (defn process [max-api msg]
   (match (s/conform ::SYSEX-IN msg)
-         [:SNDD x] (let [v (handle-SNDD x)]
-                     (.outlet max-api "print" "SNDD" (:index v) (count (:data v))))
+         [:SNDD x] (let [[hi lo data] (handle-SNDD x)]
+                     (.outlet max-api "print" "SNDD" hi lo (count data)))
+         [:SNDP x] (.outlet max-api "print" "SNDP [...]")
          [:EOX _] (.outlet max-api "print" "EOX")
          ::s/invalid (js/console.log (s/explain ::SYSEX-IN msg))
          :else (.outlet max-api "print" "(other)")))

@@ -311,6 +311,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -488,6 +490,7 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
+					"fontname" : [ "InputMono" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -497,8 +500,7 @@
 						"proportion" : 0.39
 					}
 ,
-					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
-					"fontname" : [ "InputMono" ]
+					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
