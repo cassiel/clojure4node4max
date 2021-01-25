@@ -28,9 +28,13 @@
     (.removeHandlers number)
     (.addHandler number #(midi/handle-input % msg-chan))))
 
-(let [BANK 0
-      PROG 0
-      CHK  0]
-  (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/BROADCAST-ID m/SNDR BANK PROG CHK m/EOX]))
+(let [INDEX 8192
+      CHK   0]
+  (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/BROADCAST-ID m/SNDR
+                            (bit-shift-right INDEX 7)
+                            (bit-and INDEX 0x7F)
+                            CHK m/EOX]))
 
 (close! msg-chan)
+
+(bit-shift-left 0x40 7)
