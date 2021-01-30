@@ -12,21 +12,27 @@
 
 (a/extend-promises-as-pair-channels!)
 
-;; Basic program change, channel 1:
-
-(midi/output-seq max-api [0xC0 0])
+(def *STATE* (atom {}))
 
 (def msg-chan (chan))
-
-(go-loop []
-  (when-let [m (<! msg-chan)]
-    (sysex-in/process max-api m)
-    (recur)))
 
 (let [number (.-MESSAGE_TYPES.NUMBER max-api)]
   (doto max-api
     (.removeHandlers number)
-    (.addHandler number #(midi/handle-input % msg-chan))))
+    (.addHandler number #(midi/handle-byte % msg-chan))
+    (.addHandler "ctlin" #(midi/handle-ctlin %1 %2 *STATE*))
+    (.addHandler "pgmin" #(midi/handle-pgmin %1 *STATE*))))
+
+(go-loop []
+  (when-let [m (<! msg-chan)]
+    (sysex-in/process *STATE* max-api m)
+    (recur)))
+
+;; Test: basic program change, channel 1:
+
+(midi/output-seq max-api [0xC0 0])
+
+;; Test: patch request. [127 0] is the edit buffer.
 
 (let [BANK 127
       PROG 0
@@ -34,3 +40,12 @@
   (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/BROADCAST-ID m/SNDR BANK PROG CHK m/EOX]))
 
 (close! msg-chan)
+(deref *STATE*)
+
+(let [filter-cutoff 78]
+  (-> (deref *STATE*)
+      :patch
+      (nth filter-cutoff)))
+
+(-> (deref *STATE*)
+    :location)

@@ -5,10 +5,12 @@
 
 (s/def ::SNDD-LEN (s/coll-of number? :count 391))    ; includes SOX to SNDD, HI, LO, data and CHK.
 
+(s/def ::PATCH (s/coll-of number? :count 383))
+
 (s/def ::SNDD-HEAD #(let [SOX m/SOX
-                            WALDORF m/WALDORF
-                            BLOFELD m/BLOFELD
-                            SNDD m/SNDD]
+                          WALDORF m/WALDORF
+                          BLOFELD m/BLOFELD
+                          SNDD m/SNDD]
                       (match %
                              ([SOX WALDORF BLOFELD _ SNDD & _] :seq) :t :else nil)))
 
@@ -37,10 +39,13 @@
   (let [[_ _ _ _ _ hi lo & rest] msg]
     [hi lo (butlast rest)]))
 
-(defn process [max-api msg]
+(defn process [*state* max-api msg]
   (match (s/conform ::SYSEX-IN msg)
          [:SNDD x] (let [[hi lo data] (handle-SNDD x)]
-                     (.outlet max-api "print" "SNDD" hi lo (count data)))
+                     (swap! *state* assoc
+                            :patch (s/conform ::PATCH data)
+                            :location [hi lo])
+                     )
          [:SNDP x] (.outlet max-api "print" "SNDP [...]")
          [:EOX _] (.outlet max-api "print" "EOX")
          ::s/invalid (js/console.log (s/explain ::SYSEX-IN msg))
