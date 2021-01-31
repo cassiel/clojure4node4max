@@ -1,6 +1,7 @@
 (ns net.cassiel.blofeld.incoming
   (:require-macros [cljs.core.async.macros :refer [go]])
-  (:require [cljs-promises.async :as a :refer-macros [<?]]
+  (:require [cljs.core.async :refer [>!]]
+            [cljs-promises.async :as a :refer-macros [<?]]
             [net.cassiel.blofeld.sysex-in :as sysex-in])
   )
 
@@ -27,5 +28,9 @@
 
 (defn handle-pgmin
   "Handle program change, probably following a bank select: programs indexed from 1."
-  [*state* pgm]
-  (swap! *state* assoc :program (dec pgm)))
+  [*state* ch pgm]
+  (let [bank (or (-> *state* deref :bank) 0)
+        p0 (dec pgm)]
+    (swap! *state* assoc :program p0)
+    (println "Got pgm " bank p0)
+    (go (>! ch [bank p0]))))

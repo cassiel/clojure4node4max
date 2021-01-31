@@ -16,48 +16,40 @@
 
 (def *STATE* (atom {}))
 
+;; Channel pair for slowdown. message is [hi lo] for program change.
+(def in-ch (chan))
+(def out-ch (chan))
+
 (let [number (.-MESSAGE_TYPES.NUMBER max-api)]
+  (dorun (map #(.removeHandlers max-api %) [number "ctlin" "pgmin"]))
   (doto max-api
-    (.removeHandlers number)
     (.addHandler number #(in/handle-byte *STATE* max-api %))
     (.addHandler "ctlin" #(in/handle-ctlin *STATE* %1 %2))
-    (.addHandler "pgmin" #(in/handle-pgmin *STATE* %1))))
+    (.addHandler "pgmin" #(in/handle-pgmin *STATE* in-ch %1))))
+
+(tt/slowdown in-ch out-ch)
+
+(go-loop []
+  (when-let [[hi lo] (<! out-ch)]
+    (println "Out of slowdown" [hi lo])
+    ;; In fact, [127 0] would work here because we've just loaded the edit buffer with the patch:
+    (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/BROADCAST-ID m/SNDR hi lo 0 m/EOX])
+    (recur)))
 
 
 ;; Test: basic program change, channel 1 (but doesn't switch bank):
 
 (midi/output-seq max-api [0xC0 0])
 
-;; Test: patch request. [127 0] is the edit buffer.
 
-(let [BANK 127
-      PROG 0
-      CHK  0]
-  (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/BROADCAST-ID m/SNDR BANK PROG CHK m/EOX]))
 
 (deref *STATE*)
 
-(let [filter-cutoff 78]
-  (-> (deref *STATE*)
-      :patch
-      (nth filter-cutoff)))
 
 (-> (deref *STATE*)
     :location)
 
 ;; --- Channel timer test
-
-(def in-ch (chan))
-(def out-ch (chan))
-
-(go-loop []
-  (when-let [v (<! out-ch)]
-    (println "FLUSH" v)
-    (recur)))
-
-(tt/slowdown in-ch out-ch)
-
-(go (>! in-ch (js/Date.)))
 
 (close! in-ch)
 (close! out-ch)

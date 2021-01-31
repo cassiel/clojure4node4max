@@ -6,6 +6,7 @@
   "Speed limit messages coming into in-ch, echoing to out-chan after a timeout."
   [in-ch out-ch]
   (go-loop [held-value nil]
+    (println "into slowdown with" held-value)
     (if held-value
       (alt!
         in-ch ([v] (when v (recur v)))

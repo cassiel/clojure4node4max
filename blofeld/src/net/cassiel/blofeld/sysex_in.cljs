@@ -44,6 +44,7 @@
          [:SNDD x] (let [[hi lo data] (handle-SNDD x)]
                      (swap! *state* assoc
                             :patch (s/conform ::PATCH data)
+                            ;; Location is probably [127 0] for edit buffer.
                             :location [hi lo])
                      )
          [:SNDP x] (.outlet max-api "print" "SNDP [...]")
