@@ -1,6 +1,7 @@
 (ns user
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [net.cassiel.blofeld.manifest :as m]
+            [net.cassiel.blofeld.incoming :as in]
             [net.cassiel.blofeld.midi :as midi]
             [net.cassiel.blofeld.sysex-in :as sysex-in]
             [net.cassiel.blofeld.async-tools :as tt]
@@ -15,19 +16,13 @@
 
 (def *STATE* (atom {}))
 
-(def msg-chan (chan))
-
 (let [number (.-MESSAGE_TYPES.NUMBER max-api)]
   (doto max-api
     (.removeHandlers number)
-    (.addHandler number #(midi/handle-byte % msg-chan))
-    (.addHandler "ctlin" #(midi/handle-ctlin %1 %2 *STATE*))
-    (.addHandler "pgmin" #(midi/handle-pgmin %1 *STATE*))))
+    (.addHandler number #(in/handle-byte *STATE* max-api %))
+    (.addHandler "ctlin" #(in/handle-ctlin *STATE* %1 %2))
+    (.addHandler "pgmin" #(in/handle-pgmin *STATE* %1))))
 
-(go-loop []
-  (when-let [m (<! msg-chan)]
-    (sysex-in/process *STATE* max-api m)
-    (recur)))
 
 ;; Test: basic program change, channel 1 (but doesn't switch bank):
 
@@ -40,7 +35,6 @@
       CHK  0]
   (midi/output-seq max-api [m/SOX m/WALDORF m/BLOFELD m/BROADCAST-ID m/SNDR BANK PROG CHK m/EOX]))
 
-(close! msg-chan)
 (deref *STATE*)
 
 (let [filter-cutoff 78]
