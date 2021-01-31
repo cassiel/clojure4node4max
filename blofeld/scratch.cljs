@@ -5,6 +5,7 @@
             [net.cassiel.blofeld.midi :as midi]
             [net.cassiel.blofeld.sysex-in :as sysex-in]
             [net.cassiel.blofeld.async-tools :as tt]
+            [net.cassiel.blofeld.core :as core]
             [clojure.core.match :refer [match]]
             [cljs-promises.core :as p]
             [cljs-promises.async :as a :refer-macros [<?]]
@@ -53,3 +54,18 @@
 
 (close! in-ch)
 (close! out-ch)
+
+(js/require "max-api")
+
+
+;; ----- COMPONENT
+
+(reset! core/S (core/system))
+
+(core/stop)
+(core/start)
+
+(-> (deref core/S)
+    :max-api)
+
+(keys (deref core/S))
