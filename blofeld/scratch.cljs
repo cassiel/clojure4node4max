@@ -3,6 +3,7 @@
   (:require [net.cassiel.blofeld.manifest :as m]
             [net.cassiel.blofeld.midi :as midi]
             [net.cassiel.blofeld.sysex-in :as sysex-in]
+            [net.cassiel.blofeld.async-tools :as tt]
             [clojure.core.match :refer [match]]
             [cljs-promises.core :as p]
             [cljs-promises.async :as a :refer-macros [<?]]
@@ -28,7 +29,7 @@
     (sysex-in/process *STATE* max-api m)
     (recur)))
 
-;; Test: basic program change, channel 1:
+;; Test: basic program change, channel 1 (but doesn't switch bank):
 
 (midi/output-seq max-api [0xC0 0])
 
@@ -49,3 +50,20 @@
 
 (-> (deref *STATE*)
     :location)
+
+;; --- Channel timer test
+
+(def in-ch (chan))
+(def out-ch (chan))
+
+(go-loop []
+  (when-let [v (<! out-ch)]
+    (println "FLUSH" v)
+    (recur)))
+
+(tt/slowdown in-ch out-ch)
+
+(go (>! in-ch (js/Date.)))
+
+(close! in-ch)
+(close! out-ch)
