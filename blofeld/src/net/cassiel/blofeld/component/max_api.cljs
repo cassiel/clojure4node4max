@@ -1,4 +1,4 @@
-(ns net.cassiel.blofeld.components.max-api
+(ns net.cassiel.blofeld.component.max-api
   (:require [com.stuartsierra.component :as component]
             [net.cassiel.lifecycle :refer [starting stopping]]
             [cljs-promises.async :as a]))
