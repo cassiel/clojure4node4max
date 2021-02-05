@@ -1,7 +1,8 @@
 (ns net.cassiel.blofeld.component.channel-set
   (:require [com.stuartsierra.component :as component]
             [net.cassiel.lifecycle :refer [starting stopping]]
-            [cljs.core.async :as a]))
+            [cljs.core.async :as a]
+            [net.cassiel.blofeld.async-tools :as async-tools]))
 
 (defrecord CHANNEL_SET [channels installed?]
   Object
@@ -11,11 +12,14 @@
   (start [this]
     (starting this
               :on installed?
-              :action #(assoc this
-                              :channels {:A (a/chan)
-                                         :B (a/chan)
-                                         :C (a/chan)}
-                              :installed? true)))
+              :action #(let [preset-index-fast (a/chan)
+                             preset-index-slow (a/chan)]
+                         ;; Might as well install the throttler for preset changes:
+                         (async-tools/throttle preset-index-fast preset-index-slow)
+                         (assoc this
+                                :channels {:preset-index-fast preset-index-fast
+                                           :preset-index-slow preset-index-slow}
+                                :installed?) true)))
 
   (stop [this]
     (stopping this

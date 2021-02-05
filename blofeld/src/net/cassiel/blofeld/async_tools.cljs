@@ -2,7 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop alt!]])
   (:require [cljs.core.async :as a :refer [>! <!]]))
 
-(defn slowdown
+(defn throttle
   "Speed limit messages coming into in-ch, echoing to out-chan after a timeout."
   [in-ch out-ch]
   (go-loop [held-value nil]
