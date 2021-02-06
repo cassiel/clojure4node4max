@@ -19,7 +19,7 @@
                          (assoc this
                                 :channels {:preset-index-fast preset-index-fast
                                            :preset-index-slow preset-index-slow}
-                                :installed?) true)))
+                                :installed? true))))
 
   (stop [this]
     (stopping this
