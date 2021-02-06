@@ -36,6 +36,7 @@
         p0 (dec pgm)]
     (swap! STATE assoc :program p0)
     (println "Got pgm " bank p0)
+    ;; FIX: call into data component instead.
     (go (>! ch [bank p0]))))
 
 (defrecord HANDLERS [max-api channel-set installed?]
