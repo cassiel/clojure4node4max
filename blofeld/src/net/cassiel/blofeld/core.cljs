@@ -5,10 +5,10 @@
             [net.cassiel.blofeld.component.channel-set :as channel-set]))
 
 (defn system []
-  (component/system-map :max-api (max-api/map->MAX_API {})
+  (component/system-map :channel-set (channel-set/map->CHANNEL_SET {})
+                        :max-api (max-api/map->MAX_API {})
                         :handlers (component/using (handlers/map->HANDLERS {})
-                                                   [:max-api])
-                        :channel-set (channel-set/map->CHANNEL_SET {})))
+                                                   [:max-api :channel-set])))
 
 (defonce S (atom (system)))
 

@@ -66,6 +66,15 @@
 (core/start)
 
 (-> (deref core/S)
-    :max-api)
+    :channel-set
+    :channels
+    :preset-index-slow)
+
+(let [ch (-> (deref core/S)
+             :channel-set
+             :channels
+             :preset-index-slow)]
+  (go (println "SLOWED:" (<! ch)))
+  )
 
 (keys (deref core/S))
