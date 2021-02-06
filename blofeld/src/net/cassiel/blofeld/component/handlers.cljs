@@ -3,6 +3,8 @@
   (:require [com.stuartsierra.component :as component]
             [net.cassiel.lifecycle :refer [starting stopping]]
             [net.cassiel.blofeld.component.channel-set :as channel-set]
+            [net.cassiel.blofeld.component.presets :as presets]
+            [net.cassiel.blofeld.async-tools :as async-tools]
             [cljs.core.async :refer [>!]]))
 
 (def STATE (atom nil))
@@ -31,15 +33,15 @@
 
 (defn handle-pgmin
   "Handle program change, probably following a bank select: programs indexed from 1."
-  [ch pgm]
+  [presets pgm]
   (let [bank (or (-> STATE deref :bank) 0)
         p0 (dec pgm)]
     (swap! STATE assoc :program p0)
     (println "Got pgm " bank p0)
     ;; FIX: call into data component instead.
-    (go (>! ch [bank p0]))))
+    (presets/handle-preset-recall presets bank pgm)))
 
-(defrecord HANDLERS [max-api channel-set installed?]
+(defrecord HANDLERS [max-api channel-set presets installed?]
   Object
   (toString [this] "HANDLERS")
 
@@ -48,14 +50,14 @@
     (starting this
               :on installed?
               :action (fn [] (let [max-api (:max-api max-api)
-                                   preset-chan (-> channel-set :channels :preset-index-fast)
                                    number (.-MESSAGE_TYPES.NUMBER max-api)]
-                               (do (doto max-api
-                                     (.addHandler number (partial handle-byte max-api))
-                                     (.addHandler "ctlin" handle-ctlin)
-                                     (.addHandler "pgmin" (partial handle-pgmin preset-chan)))
-                                   (assoc this
-                                          :installed? true))))))
+                               (reset! STATE nil)
+                               (doto max-api
+                                 (.addHandler number (partial handle-byte max-api))
+                                 (.addHandler "ctlin" handle-ctlin)
+                                 (.addHandler "pgmin" (partial handle-pgmin presets)))
+                               (assoc this
+                                      :installed? true)))))
 
   (stop [this]
     (stopping this
