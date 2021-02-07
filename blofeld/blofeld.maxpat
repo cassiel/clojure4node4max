@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-32",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 255.0, 310.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-26",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -430,6 +442,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -684,6 +698,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
+					"order" : 1,
 					"source" : [ "obj-9", 0 ]
 				}
 
@@ -693,6 +708,14 @@
 					"destination" : [ "obj-24", 0 ],
 					"order" : 0,
 					"source" : [ "obj-9", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"order" : 0,
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
@@ -742,7 +765,6 @@
 				"name" : "cassiel",
 				"default" : 				{
 					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
-					"fontname" : [ "InputMono" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -751,7 +773,8 @@
 						"angle" : 270.0,
 						"proportion" : 0.39
 					}
-
+,
+					"fontname" : [ "InputMono" ]
 				}
 ,
 				"parentstyle" : "",
@@ -761,11 +784,10 @@
 				"name" : "cassiel-1",
 				"default" : 				{
 					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ],
-					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 					"bgcolor" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
+					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ],
-					"fontname" : [ "Courier" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -775,7 +797,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"fontname" : [ "Courier" ]
 				}
 ,
 				"parentstyle" : "",
@@ -786,12 +809,11 @@
 				"default" : 				{
 					"fontface" : [ 0 ],
 					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ],
-					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
-					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgcolor" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
+					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ],
-					"fontname" : [ "Courier" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -801,7 +823,8 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"fontname" : [ "Courier" ]
 				}
 ,
 				"parentstyle" : "",

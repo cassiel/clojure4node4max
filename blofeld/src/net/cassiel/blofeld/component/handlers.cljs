@@ -2,7 +2,6 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [com.stuartsierra.component :as component]
             [net.cassiel.lifecycle :refer [starting stopping]]
-            [net.cassiel.blofeld.component.channel-set :as channel-set]
             [net.cassiel.blofeld.component.presets :as presets]
             [net.cassiel.blofeld.async-tools :as async-tools]
             [cljs.core.async :refer [>!]]))
@@ -11,13 +10,13 @@
 
 (defn handle-byte
   "Handle a byte of sysex MIDI input."
-  [max-api i]
+  [presets i]
   ;; This flushing will output a sysex as [F0 nn nn nn ...] and as [F7] separately.
   ;; We don't flush except on message bytes, so this only works if we don't care
   ;; about getting the F7 straight away; all other messages will get delayed.
   (when (>= i 0x80)
     (when-let [msg (:partial-sysex (deref STATE))]
-      #_ (sysex-in/process STATE max-api (reverse msg))
+      (presets/handle-sysex presets (reverse msg))
       (swap! STATE dissoc :partial-sysex)))
 
   ;; Bytes accumulated backwards (hence `reverse` above):
@@ -41,7 +40,7 @@
     ;; FIX: call into data component instead.
     (presets/handle-preset-recall presets bank pgm)))
 
-(defrecord HANDLERS [max-api channel-set presets installed?]
+(defrecord HANDLERS [max-api presets installed?]
   Object
   (toString [this] "HANDLERS")
 
