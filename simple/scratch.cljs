@@ -2,6 +2,8 @@
 
 (js/Date.)
 
+(-> (js/Intl.DateTimeFormat. "en-GB") (.format (js/Date.)))
+
 (print (js/Date.))
 
 (def max-api (js/require "max-api"))
