@@ -46,7 +46,7 @@ Start the Max node process once the CIDER session has initialised and is waiting
 
 ** Working with Promises (=promises=)
 
-A more sophisticated example, interacting with Max dictionaries. Since dictionary operations return Javascript promises, we're using [[https://github.com/jamesmacaulay/cljs-promises][cljs-promises]], which wraps them in ClojureScript's [[https://github.com/clojure/core.async][core.async]] machinery.
+A more sophisticated example, interacting with Max dictionaries. Since dictionary operations return Javascript promises, we're using [[https://github.com/jamesmacaulay/cljs-promises][cljs-promises]], which wraps them in ClojureScript's [[https://github.com/clojure/core.async][core.async]] machinery. (TODO: that package is probably not needed any more, use =<p!= instead.)
 
 We can use NPM to wheel in WebSocket support for the REPL to replace the less efficient polling: there's a message box to mash to do that in the Max patcher. (TODO: that, or something equivalent, might be available in [[http://cljsjs.github.io/][CLJSJS]], which would be neater.)
 
