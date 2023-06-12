@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 130.0, -1141.0, 423.0, 787.0 ],
+		"rect" : [ -157.0, -1024.0, 423.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,12 +40,25 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 210.0, 20.0, 167.0, 20.0 ],
+					"presentation_linecount" : 2,
+					"text" : "script npm install osc"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-10",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 45.0, 20.0, 160.0, 20.0 ],
+					"patching_rect" : [ 30.0, 20.0, 160.0, 20.0 ],
 					"text" : "script npm install ws"
 				}
 
@@ -165,7 +178,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 96.0, 135.0, 212.0, 20.0 ],
+					"patching_rect" : [ 96.0, 135.0, 138.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
@@ -175,7 +188,7 @@
 					}
 ,
 					"style" : "cassiel",
-					"text" : "node.script promises.js"
+					"text" : "node.script osc.js"
 				}
 
 			}
@@ -218,6 +231,13 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -250,8 +270,8 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "promises.js",
-				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/promises",
+				"name" : "osc.js",
+				"bootpath" : "~/GITHUB/cassiel/clojure4node4max/osc",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
