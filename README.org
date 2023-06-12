@@ -26,7 +26,7 @@ We were initially using the basic (but new) Clojure CLI tools, but a build on a 
 
 ** Compile and Run: First Shot (=simple=)
 
-A very simple setup with a network REPL. This is the build configuration file, =dev.cljs.edn=:
+A very simple setup with a network REPL. In all the simple examples, the actual code is just sitting in =scratch.cljs=. Below is the build configuration file, =dev.cljs.edn=:
 
 #+BEGIN_SRC clojure
   ^{:watch-dirs   ["src"]
@@ -48,6 +48,8 @@ Start the Max node process once the CIDER session has initialised and is waiting
 
 A more sophisticated example, interacting with Max dictionaries. Since dictionary operations return Javascript promises, we're using [[https://github.com/jamesmacaulay/cljs-promises][cljs-promises]], which wraps them in ClojureScript's [[https://github.com/clojure/core.async][core.async]] machinery.
 
+We can use NPM to wheel in WebSocket support for the REPL to replace the less efficient polling: there's a message box to mash to do that in the Max patcher. (TODO: that, or something equivalent, might be available in [[http://cljsjs.github.io/][CLJSJS]], which would be neater.)
+
 ** Blofeld (=net.cassiel.blofeld=)
 
-A more sophisticated playpen for talking to a Waldorf Blofeld synthesiser. We use NPM to wheel in WebSocket support for the REPL to replace the less efficient polling.
+A more sophisticated playpen for talking to a Waldorf Blofeld synthesiser. This example actually establishes a namespace of modules, and uses Stuart Sierra's [[https://github.com/stuartsierra/component][Component framework]] for structuring.
