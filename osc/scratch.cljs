@@ -34,7 +34,7 @@
   )
 
 (let [port (-> core/S deref :port :port)]
-  (ocall port :send (clj->js {:address "/sending"
+  (ocall port :send (clj->js {:address "/1/fader1"
                               :args [{:type "f" :value (rand)}]})))
 
 #js {:address "/sending" :args [{:type "f" :value (rand)}]}

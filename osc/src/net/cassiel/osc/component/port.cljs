@@ -15,7 +15,7 @@
               :action #(let [osc     (js/require "osc")
                              port (new osc.UDPPort #js {:localAddress  "0.0.0.0"
                                                         :localPort     54321
-                                                        :remoteAddress "127.0.0.1"
+                                                        :remoteAddress "192.168.86.247"
                                                         :remotePort    54322
                                                         :metadata      true})
                              in-chan (async/chan)]
