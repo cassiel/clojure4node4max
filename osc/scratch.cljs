@@ -1,7 +1,7 @@
 ;; Play with OSC:
 
 (ns user
-  (:require [cljs.core.async :as async :refer [put! chan <! go]]
+  (:require [cljs.core.async :as async :refer [<! >! go go-loop]]
             [cljs.core.async.interop :refer [<p!]]
             [net.cassiel.osc.core :as core]
             [oops.core :refer [oget oget+ oset! oset!+ ocall]]))
@@ -24,6 +24,11 @@
 
 ;; --- PORT
 
-(let [p (-> core/S deref :port :port)]
-  (ocall p :on "message" #(console.log "MESSAGE" %))
-  (ocall p :open))
+
+
+(let [ch (-> core/S deref :port :in-chan)]
+  (go-loop []
+    (when-let [v (<! ch)]
+      (js/console.log v)
+      (recur)))
+  )
