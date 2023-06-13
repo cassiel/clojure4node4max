@@ -13,27 +13,26 @@
     (starting this
               :on installed?
               :action #(let [osc     (js/require "osc")
-                             in-port (new osc.UDPPort #js {:localAddress  "0.0.0.0"
-                                                           :localPort     54321
-                                                           :remoteAddress "127.0.0.1"
-                                                           :remotePort    54322
-                                                           :metadata      true})
-                             _ (js/console.log "CHECK" (oget in-port :options))
+                             port (new osc.UDPPort #js {:localAddress  "0.0.0.0"
+                                                        :localPort     54321
+                                                        :remoteAddress "127.0.0.1"
+                                                        :remotePort    54322
+                                                        :metadata      true})
                              in-chan (async/chan)]
-                         (doto in-port
+                         (doto port
                            (ocall :on "message" (fn [msg] (go (>! in-chan msg))))
                            (ocall :open))
                          (assoc this
-                                :in-port in-port
+                                :port port
                                 :in-chan in-chan
                                 :installed? true))))
 
   (stop [this]
     (stopping this
               :on installed?
-              :action #(do (ocall (:in-port this) :close)
+              :action #(do (ocall (:port this) :close)
                            (async/close! (:in-chan this))
                            (assoc this
-                                  :in-port nil
+                                  :port nil
                                   :in-chan nil
                                   :installed? false)))))

@@ -33,20 +33,10 @@
       (recur)))
   )
 
-(let [port (-> core/S deref :port :in-port)]
+(let [port (-> core/S deref :port :port)]
   (ocall port :send (clj->js {:address "/sending"
                               :args [{:type "f" :value (rand)}]})))
 
 #js {:address "/sending" :args [{:type "f" :value (rand)}]}
 
 ;; ---
-
-(def p
-  (let [osc (js/require "osc")]
-    (new osc.UDPPort #js {:localAddress  "0.0.0.0"
-                          :localPort     54321
-                          :remoteAddress "127.0.0.1"
-                          :remotePort    54322
-                          :metadata      true})))
-
-(.-options p)
