@@ -54,6 +54,8 @@ We can use NPM to wheel in WebSocket support for the REPL to replace the less ef
 
 Quite a complex example for bringing up an OSC forwarder with logging into a Max dictionary (the OSC being handled internally in Node). The complexity is the bootstrapping of the components, since we want to read some configuration (addresses, ports) from a Max dictionary before we kick off - and that's a deferred, promise-based call as well.
 
+The cljs-promises package is obsolete; there's now first-class support for promises in core.async.
+
 ** Blofeld (=net.cassiel.blofeld=)
 
 A more sophisticated playpen for talking to a Waldorf Blofeld synthesiser. This example actually establishes a namespace of modules, and uses Stuart Sierra's [[https://github.com/stuartsierra/component][Component framework]] for structuring.
