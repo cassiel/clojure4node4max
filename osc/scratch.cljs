@@ -15,18 +15,42 @@
                                 :metadata true}))
 (ocall port :close)
 
-;; ----- COMPONENT
+;; ----- COMPONENT (OBSOLETE)
 
 (reset! core/S (core/system))
 
 (core/start)
 (core/stop)
 
+;; ----- New, more complex bootstrap:
+
+(def B (core/bootstrap))
+
+(:S B)
+
+((:start B))
+((:stop B))
+
+
+;; --- Attempts at configuration:
+
+(let [max-api (js/require "max-api")]
+  (go (-> (<p! (ocall max-api :getDict "CONFIG"))
+          (js->clj :keywordize-keys true)
+          :remoteAddress
+          js/console.log))
+  )
+
+(-> core/S deref :port :X)
+
+(defrecord FOO [a b c])
+
+(FOO. 2 3 4)
+(map->FOO {:a 12})
+
 ;; --- PORT
 
-
-
-(let [ch (-> core/S deref :port :in-chan)]
+(let [ch (-> (:S B) deref :port :in-chan)]
   (go-loop []
     (when-let [v (<! ch)]
       (js/console.log v)
@@ -39,4 +63,11 @@
 
 #js {:address "/sending" :args [{:type "f" :value (rand)}]}
 
-;; ---
+;; --- DICTIONARY TESTS
+
+(defn update-count [key]
+  (go (let [d (-> (<p! (ocall max-api :getDict "X"))
+                  (js->clj :keywordize-keys true))
+            n (inc (get d key))]
+        (<p! (ocall max-api :updateDict "X" (name key) n))
+        (ocall max-api :outlet "show"))))
