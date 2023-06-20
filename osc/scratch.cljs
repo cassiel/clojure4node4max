@@ -43,3 +43,6 @@
         (ocall max-api :outlet "show"))))
 
 (clj->js (conj (seq [1 2 3]) 99))
+
+(update {} :X inc)
+(update {} "X" inc)

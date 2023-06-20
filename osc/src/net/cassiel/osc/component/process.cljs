@@ -13,26 +13,27 @@
   (start [this]
     (starting this
               :on installed?
-              :action #(do
-                         (let [ch (:in-chan port)
-                               osc-port (:port port)
-                               max-api (:max-api max-api)]
-                           (go-loop []
-                             (when-let [v (<! ch)]
-                               ;; (println "PROCESS" v)
-                               (ocall osc-port :send v)
+              :action #(let [ch (:in-chan port)
+                             osc-port (:port port)
+                             max-api (:max-api max-api)]
+                         (go-loop [totals { }]
+                           (when-let [v (<! ch)]
+                             ;; (println "PROCESS" v)
+                             (ocall osc-port :send v)
 
-                               (let [address (oget v :address)
-                                     args (-> v
-                                              (oget :args)
-                                              js->clj
-                                              seq
-                                              (conj 9999)
-                                              clj->js)]
-                                 (go
-                                   (<p! (ocall max-api :updateDict "DISPLAY" address args))
-                                   (ocall max-api :outlet "show")))
-                               (recur))))
+                             (let [address (oget v :address)
+                                   totals' (update totals address inc)
+                                   _ (println totals')
+                                   args (-> v
+                                            (oget :args)
+                                            js->clj
+                                            seq
+                                            (conj (get totals' address))
+                                            clj->js)]
+                               (go
+                                 (<p! (ocall max-api :updateDict "DISPLAY" address args))
+                                 (ocall max-api :outlet "show"))
+                               (recur totals'))))
                          (assoc this :installed? true))))
 
   (stop [this]
