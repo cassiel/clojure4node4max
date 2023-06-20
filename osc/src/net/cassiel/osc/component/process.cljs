@@ -23,7 +23,6 @@
 
                              (let [address (oget v :address)
                                    totals' (update totals address inc)
-                                   _ (println totals')
                                    args (-> v
                                             (oget :args)
                                             js->clj

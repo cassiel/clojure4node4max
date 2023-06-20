@@ -58,7 +58,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 675.0, 730.0, 180.0, 20.0 ],
-					"text" : "/int 290."
+					"text" : "/float 509.41"
 				}
 
 			}
@@ -211,7 +211,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 465.0, 595.0, 50.0, 20.0 ]
+					"patching_rect" : [ 465.0, 595.0, 75.0, 20.0 ]
 				}
 
 			}
