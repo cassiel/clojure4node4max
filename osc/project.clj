@@ -11,5 +11,12 @@
                                   [binaryage/oops "0.7.2"]]
                    :resource-paths ["target"]
                    :clean-targets ^{:protect false} ["target"]}}
-  :plugins [[com.github.liquidz/antq "RELEASE"]]
+  :plugins [[com.github.liquidz/antq "RELEASE"]
+            [lein-cljsbuild "1.1.8"]]
+  :cljsbuild {:builds {:main {:source-paths ["src"]
+                              :compiler {:main net.cassiel.osc.core
+                                         :target :nodejs
+                                         :output-to "_COMPILED.js"
+                                         :output-dir "./_COMPILED"
+                                         :optimizations :none}}}}
   :aliases {"fig" ["trampoline" "run" "-m" "figwheel.main"]})
