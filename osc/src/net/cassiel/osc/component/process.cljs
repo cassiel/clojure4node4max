@@ -16,6 +16,10 @@
               :action #(let [ch (:in-chan port)
                              osc-port (:port port)
                              max-api (:max-api max-api)]
+                         (go
+                           (<p! (ocall max-api :setDict "DISPLAY" #js { }))
+                           #_ (<p! (ocall max-api :outlet "show")))
+
                          (go-loop [totals { }]
                            (when-let [v (<! ch)]
                              ;; (println "PROCESS" v)
@@ -31,7 +35,7 @@
                                             clj->js)]
                                (go
                                  (<p! (ocall max-api :updateDict "DISPLAY" address args))
-                                 (ocall max-api :outlet "show"))
+                                 #_ (ocall max-api :outlet "show"))
                                (recur totals'))))
                          (assoc this :installed? true))))
 
