@@ -6,47 +6,24 @@
             [net.cassiel.osc.core :as core]
             [oops.core :refer [oget oget+ oset! oset!+ ocall]]))
 
-(def max-api (js/require "max-api"))
-
-(def osc (js/require "osc"))
-
-(def port (new osc.UDPPort #js {:localAddress "0.0.0.0"
-                                :localPort    54321
-                                :metadata true}))
-(ocall port :close)
-
 ;; ----- (OUTER) COMPONENT:
 
-(reset! core/S (core/system))
+(reset! core/BOOT (core/boot-system))
 
 (core/start)
 (core/stop)
 
-(-> core/BOOT deref :system :S deref :port :in-chan)
-
-
-;; --- Attempts at configuration:
-
-(let [max-api (js/require "max-api")]
-  (go (-> (<p! (ocall max-api :getDict "CONFIG"))
-          (js->clj :keywordize-keys true)
-          :remoteAddress
-          js/console.log))
-  )
-
-(-> core/S deref :port :X)
-
-(defrecord FOO [a b c])
-
-(FOO. 2 3 4)
-(map->FOO {:a 12})
+(-> core/BOOT deref :system :S deref :port :port (oget :options))
 
 ;; --- PORT
 
-(let [ch (-> core/BOOT deref :system :S deref :port :in-chan)]
+(let [port-component (-> core/BOOT deref :system :S deref :port)
+      ch (:in-chan port-component)
+      osc-port (:port port-component)]
   (go-loop []
     (when-let [v (<! ch)]
-      (js/console.log v)
+      (println v)
+      (ocall osc-port :send v)
       (recur)))
   )
 

@@ -14,11 +14,8 @@
               :on installed?
               :action #(let [_       (js/console.log "CONFIG" (clj->js config))
                              osc     (js/require "osc")
-                             port    (new osc.UDPPort #js {:localAddress  "0.0.0.0"
-                                                           :localPort     54321
-                                                           :remoteAddress "127.0.0.1"
-                                                           :remotePort    54322
-                                                           :metadata      false})
+                             port    (new osc.UDPPort (clj->js (merge config {:localAddress  "0.0.0.0"
+                                                                              :metadata      false})))
                              in-chan (async/chan)]
                          (doto port
                            (ocall :on "message" (fn [msg] (go (>! in-chan msg))))

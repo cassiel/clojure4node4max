@@ -1,6 +1,5 @@
 {
     "localPort": 54321,
     "remoteAddress": "127.0.0.1",
-    "remotePort": 54322,
-    "X": 99
+    "remotePort": 54322
 }

@@ -3,6 +3,7 @@
             [net.cassiel.lifecycle :refer [starting stopping]]
             [net.cassiel.osc.component.max-api :as max-api]
             [net.cassiel.osc.component.port :as port]
+            [net.cassiel.osc.component.process :as process]
             [cljs.core.async :as async :refer [<! >! go go-loop]]
             [cljs.core.async.interop :refer [<p!]]
             [oops.core :refer [oget oget+ oset! oset!+ ocall]]))
@@ -28,7 +29,9 @@
                                 ;; Once that's in, we can pass it in as argument as we build the inner system,
                                 ;; which we immediately start:
                                 (reset! S (-> (component/system-map :max-api max-api
-                                                                    :port (port/map->PORT {:config config}))
+                                                                    :port (port/map->PORT {:config config})
+                                                                    :process (component/using (process/map->PROCESS {})
+                                                                                              [:port]))
                                               component/start))))
                           (assoc this :S S :installed? true)))))
 
