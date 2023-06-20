@@ -58,7 +58,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 675.0, 730.0, 180.0, 20.0 ],
-					"text" : "/int 169."
+					"text" : "/int 290."
 				}
 
 			}
@@ -354,7 +354,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 15.0, 280.0, 68.0, 20.0 ],
+					"patching_rect" : [ 15.0, 280.0, 95.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -362,7 +362,7 @@
 					}
 ,
 					"style" : "cassiel",
-					"text" : "dict X"
+					"text" : "dict DISPLAY"
 				}
 
 			}

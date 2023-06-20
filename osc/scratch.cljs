@@ -41,3 +41,5 @@
             n (inc (get d key))]
         (<p! (ocall max-api :updateDict "X" (name key) n))
         (ocall max-api :outlet "show"))))
+
+(clj->js (conj (seq [1 2 3]) 99))

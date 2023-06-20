@@ -31,7 +31,7 @@
                                 (reset! S (-> (component/system-map :max-api max-api
                                                                     :port (port/map->PORT {:config config})
                                                                     :process (component/using (process/map->PROCESS {})
-                                                                                              [:port]))
+                                                                                              [:port :max-api]))
                                               component/start))))
                           (assoc this :S S :installed? true)))))
 
