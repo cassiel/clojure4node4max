@@ -19,10 +19,14 @@
   (start [this]
     (starting this
               :on installed?
-              :action (let [S (atom nil)]
+              :action (let [;; Atom for the inner system:
+                            S (atom nil)]
                         (fn []
-                          (go (let [config (-> (<p! (ocall (:max-api max-api) :getDict "CONFIG" ))
+                          (go (let [;; Asynchronous call out to Max to get the configuration dictionary:
+                                    config (-> (<p! (ocall (:max-api max-api) :getDict "CONFIG"))
                                                (js->clj :keywordize-keys true))]
+                                ;; Once that's in, we can pass it in as argument as we build the inner system,
+                                ;; which we immediately start:
                                 (reset! S (-> (component/system-map :max-api max-api
                                                                     :port (port/map->PORT {:config config}))
                                               component/start))))
@@ -32,6 +36,7 @@
     (stopping this
               :on installed?
               :action (fn []
+                        ;; Slight race here if we stop really quickly before the async config fetch:
                         (when-let [s (deref (:S this))]
                           (component/stop s))
-                        (assoc this :S nil :installed? false))))  )
+                        (assoc this :S nil :installed? false)))))

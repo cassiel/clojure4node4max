@@ -13,27 +13,15 @@
 
 ;; TODO: this feels like a defrecord with first-class start/stop functions.
 
-(comment (defn bootstrap []
-           (let [max-api (js/require "max-api")
-                 S       (atom nil)
-                 start   #(when (deref S) (swap! S component/start))
-                 stop    #(when (deref S) (swap! S component/stop))]
-             (go (let [config (-> (<p! (ocall max-api :getDict "CONFIG"))
-                                  (js->clj :keywordize-keys true))
-                       system #(component/system-map :max-api (max-api/map->MAX_API {})
-                                                     :port (port/map->PORT {:config config}))]
-                   (reset! S (system))))
-             {:S S :start start :stop stop})))
-
 (defn boot-system []
   (component/system-map :max-api (max-api/map->MAX_API {})
                         :system (component/using (system/map->SYSTEM {})
                                                  [:max-api])))
 
-(defonce S (atom (boot-system)))
+(defonce BOOT (atom (boot-system)))
 
 (defn start []
-  (swap! S component/start))
+  (swap! BOOT component/start))
 
 (defn stop []
-  (swap! S component/stop))
+  (swap! BOOT component/stop))

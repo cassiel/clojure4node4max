@@ -15,21 +15,14 @@
                                 :metadata true}))
 (ocall port :close)
 
-;; ----- COMPONENT (OBSOLETE)
+;; ----- (OUTER) COMPONENT:
 
 (reset! core/S (core/system))
 
 (core/start)
 (core/stop)
 
-;; ----- New, more complex bootstrap:
-
-(def B (core/bootstrap))
-
-(:S B)
-
-((:start B))
-((:stop B))
+(-> core/BOOT deref :system :S deref :port :in-chan)
 
 
 ;; --- Attempts at configuration:
@@ -50,7 +43,7 @@
 
 ;; --- PORT
 
-(let [ch (-> (:S B) deref :port :in-chan)]
+(let [ch (-> core/BOOT deref :system :S deref :port :in-chan)]
   (go-loop []
     (when-let [v (<! ch)]
       (js/console.log v)

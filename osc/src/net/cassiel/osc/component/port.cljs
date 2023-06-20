@@ -12,7 +12,8 @@
   (start [this]
     (starting this
               :on installed?
-              :action #(let [osc     (js/require "osc")
+              :action #(let [_       (js/console.log "CONFIG" (clj->js config))
+                             osc     (js/require "osc")
                              port    (new osc.UDPPort #js {:localAddress  "0.0.0.0"
                                                            :localPort     54321
                                                            :remoteAddress "127.0.0.1"
