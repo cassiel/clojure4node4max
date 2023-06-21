@@ -18,7 +18,7 @@
                              max-api (:max-api max-api)]
                          (go
                            (<p! (ocall max-api :setDict "DISPLAY" #js { }))
-                           #_ (<p! (ocall max-api :outlet "show")))
+                           (<p! (ocall max-api :outlet "show")))
 
                          (go-loop [totals { }]
                            (when-let [v (<! ch)]
@@ -35,7 +35,7 @@
                                             clj->js)]
                                (go
                                  (<p! (ocall max-api :updateDict "DISPLAY" address args))
-                                 #_ (ocall max-api :outlet "show"))
+                                 (ocall max-api :outlet "show"))
                                (recur totals'))))
                          (assoc this :installed? true))))
 

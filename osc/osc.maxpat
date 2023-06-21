@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 197.0, 135.0, 973.0, 846.0 ],
+		"rect" : [ 228.0, 145.0, 973.0, 846.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,49 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-47",
+					"id" : "obj-33",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 75.0, 315.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 75.0, 280.0, 81.0, 20.0 ],
+					"text" : "route show"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-26",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 180.0, 310.0, 88.0, 20.0 ],
+					"text" : "clear, bang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 75.0, 290.0, 109.0, 20.0 ],
-					"text" : "loadmess clear"
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 180.0, 280.0, 66.0, 20.0 ],
+					"text" : "loadbang"
 				}
 
 			}
@@ -59,7 +95,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 435.0, 415.0, 270.0, 70.0 ],
-					"presentation_linecount" : 12,
 					"text" : "OSC tracker: each address will appear, the first argument being the number of times it's been seen, the remaining args being those last seen with this address."
 				}
 
@@ -69,12 +104,11 @@
 					"bubble" : 1,
 					"bubblepoint" : 1.0,
 					"id" : "obj-45",
-					"linecount" : 9,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 810.0, 55.0, 150.0, 118.0 ],
-					"presentation_linecount" : 9,
+					"patching_rect" : [ 810.0, 55.0, 162.0, 106.0 ],
 					"text" : "Edit config.js externally to set ports and addresses. This display should reload; stop/start Node.js to pick up changes."
 				}
 
@@ -88,7 +122,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 240.0, 85.0, 150.0, 70.0 ],
-					"presentation_linecount" : 5,
 					"text" : "Toggle to launch/stop Node.js and the OSC processing pipeline."
 				}
 
@@ -127,7 +160,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 675.0, 730.0, 180.0, 20.0 ],
-					"text" : "/int 405."
+					"text" : "/float 0.4511"
 				}
 
 			}
@@ -326,7 +359,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 360.0, 300.0, 95.0, 20.0 ],
+					"patching_rect" : [ 495.0, 300.0, 95.0, 20.0 ],
 					"text" : "print stderr"
 				}
 
@@ -337,7 +370,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 255.0, 300.0, 95.0, 20.0 ],
+					"patching_rect" : [ 390.0, 300.0, 95.0, 20.0 ],
 					"text" : "print stdout"
 				}
 
@@ -349,7 +382,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 255.0, 250.0, 145.0, 20.0 ],
+					"patching_rect" : [ 390.0, 250.0, 145.0, 20.0 ],
 					"text" : "route stdout stderr"
 				}
 
@@ -373,7 +406,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 75.0, 370.0, 345.0, 165.0 ],
+					"patching_rect" : [ 75.0, 425.0, 345.0, 165.0 ],
 					"style" : "cassiel"
 				}
 
@@ -386,7 +419,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 75.0, 330.0, 95.0, 20.0 ],
+					"patching_rect" : [ 75.0, 385.0, 95.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -414,7 +447,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 15.0, 550.0, 400.0, 220.0 ],
+					"patching_rect" : [ 15.0, 600.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -427,7 +460,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 90.0, 200.0, 138.0, 20.0 ],
+					"patching_rect" : [ 75.0, 200.0, 138.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
@@ -452,9 +485,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"color" : [ 1.0, 0.709803921568627, 0.0, 1.0 ],
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 218.5, 243.5, 24.5, 243.5 ],
+					"midpoints" : [ 203.5, 243.5, 24.5, 243.5 ],
 					"order" : 1,
 					"source" : [ "obj-1", 1 ]
 				}
@@ -555,6 +595,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
 					"source" : [ "obj-27", 0 ]
 				}
@@ -569,6 +616,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-36", 0 ],
 					"source" : [ "obj-37", 0 ]
 				}
@@ -576,8 +637,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"source" : [ "obj-47", 0 ]
+					"destination" : [ "obj-26", 0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
