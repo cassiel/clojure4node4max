@@ -4,7 +4,7 @@
   (:require [cljs.core.async :as async :refer [<! >! go go-loop]]
             [cljs.core.async.interop :refer [<p!]]
             [net.cassiel.osc.core :as core]
-            [oops.core :refer [oget oget+ oset! oset!+ ocall]]))
+            [oops.core :refer [oget oget+ oset! oset!+ ocall oapply]]))
 
 ;; ----- (OUTER) COMPONENT:
 
@@ -34,6 +34,14 @@
 #js {:address "/sending" :args [{:type "f" :value (rand)}]}
 
 ;; --- DICTIONARY TESTS
+
+(apply str "A" "B" ["C" "D"])
+(str "C" "D")
+
+(oapply js/console :log ["HELLO"])
+
+(let [max-api (js/require "max-api")]
+  (oapply max-api :outlet (seq ["set" "/A" "HELLO"])))
 
 (defn update-count [key]
   (go (let [d (-> (<p! (ocall max-api :getDict "X"))
