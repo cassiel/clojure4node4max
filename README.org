@@ -50,7 +50,7 @@ A more sophisticated example, interacting with Max dictionaries. Since dictionar
 
 We can use NPM to wheel in WebSocket support for the REPL to replace the less efficient polling: there's a message box to mash to do that in the Max patcher. (TODO: that, or something equivalent, might be available in [[http://cljsjs.github.io/][CLJSJS]], which would be neater.)
 
-** OSC (=net.cassiel.osc=) - unfinished
+** OSC (=net.cassiel.osc=)
 
 Quite a complex example for bringing up an OSC forwarder with logging into a Max dictionary (the OSC being handled internally in Node). The complexity is the bootstrapping of the components, since we want to read some configuration (addresses, ports) from a Max dictionary before we kick off - and that's a deferred, promise-based call as well.
 

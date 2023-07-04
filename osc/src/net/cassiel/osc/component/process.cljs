@@ -22,7 +22,7 @@
 
                          (go-loop [totals { }]
                            (when-let [v (<! ch)]
-                             (println "PROCESS" v)
+                             #_ (println "PROCESS" v)
                              (ocall osc-port :send v)
 
                              (let [address (oget v :address)
@@ -33,14 +33,11 @@
                                             js->clj
                                             seq
                                             (conj (get totals' address))
-                                            #_ clj->js)]
-                               (go
-                                 (println "DISPLAY" address args)
-                                 #_ (<p! (ocall max-api :updateDict "DISPLAY" address args))
-                                 (<p! (oapply max-api :outlet (-> args
-                                                                  (conj address)
-                                                                  (conj "set"))))
-                                 (<p! (ocall max-api :outlet "show")))
+                                            clj->js)]
+
+                               #_ (println "DISPLAY" address args)
+                               (<p! (ocall max-api :updateDict "DISPLAY" address args))
+                               (<p! (ocall max-api :outlet "show"))
                                (recur totals'))))
                          (assoc this :installed? true))))
 
