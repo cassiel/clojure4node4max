@@ -1,3 +1,0 @@
-{:watch-dirs   ["src"]
- :node-command "node"
- :launch-node  false}

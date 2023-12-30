@@ -60,4 +60,4 @@ Features: forwards all incoming OSC to an output address and port (which can be 
 
 ** Blofeld (=net.cassiel.blofeld=)
 
-A more sophisticated playpen for talking to a Waldorf Blofeld synthesiser. This example actually establishes a namespace of modules, and uses Stuart Sierra's [[https://github.com/stuartsierra/component][Component framework]] for structuring.
+This example has been moved to its [[https://github.com/cassiel/blofeld][own repository]].
